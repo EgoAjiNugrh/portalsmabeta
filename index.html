@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAPAN INFORMASI DIGITAL - SMAI DRM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- PENGUMUMAN BANNER (EYE-CATCHING) -->
+    <div class="announcement-banner" id="announcementBanner">
+        <div class="announcement-content">
+            <i class="fas fa-bullhorn announcement-icon"></i>
+            <marquee class="announcement-text" id="announcementText">
+                Selamat datang di Papan Informasi Digital SMAI DRM - Update informasi real-time tersedia
+            </marquee>
+            <i class="fas fa-times close-announcement" onclick="closeAnnouncement()"></i>
+        </div>
+    </div>
+
+    <!-- HEADER DENGAN JAM BESAR -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="school-logo">
+                    <i class="fas fa-school logo-icon"></i>
+                    <div class="logo-text">
+                        <h1>SMAI DRM</h1>
+                        <p>Papan Informasi Digital</p>
+                    </div>
+                </div>
+                
+                <div class="datetime-display">
+                    <div class="digital-clock" id="digitalClock">
+                        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                    </div>
+                    <div class="current-date" id="currentDate">
+                        Rabu, 20 Maret 2024
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="system-status">
+                        <span class="status-dot active"></span>
+                        <span class="status-text">Live</span>
+                    </div>
+                    <a href="login.html" class="admin-access-btn">
+                        <i class="fas fa-user-shield"></i>
+                        <span class="btn-text">Admin/Kepsek</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TOMBOL AJUKAN IZIN (FLOATING) -->
+    <button class="floating-izin-btn" onclick="openIzinModal()">
+        <i class="fas fa-file-signature"></i>
+        <span>AJUKAN IZIN</span>
+    </button>
+
+    <!-- KONTEN UTAMA -->
+    <main class="main-content">
+        <div class="container">
+            <!-- GRID 4 KOLOM -->
+            <div class="dashboard-grid">
+                
+                <!-- KOLOM 1: GURU IZIN HARI INI -->
+                <section class="info-card card-izin">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user-clock"></i> Guru Izin Hari Ini</h2>
+                        <span class="badge" id="countIzin">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="izin-list" id="izinList">
+                            <!-- Data akan diisi JS -->
+                            <div class="empty-state">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Tidak ada guru izin hari ini</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KOLOM 2: GURU PIKET & KEPSEK -->
+                <section class="info-card card-piket">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user-check"></i> Guru Piket Hari Ini</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="piket-list" id="piketList">
+                            <div class="piket-item">
+                                <div class="piket-name">Dra. Siti Aminah</div>
+                                <div class="piket-subject">Matematika</div>
+                            </div>
+                            <div class="piket-item">
+                                <div class="piket-name">Agus Wibowo, S.Pd</div>
+                                <div class="piket-subject">IPA</div>
+                            </div>
+                        </div>
+                        
+                        <div class="kepsek-section">
+                            <div class="section-title">
+                                <i class="fas fa-user-tie"></i> Kepala Sekolah
+                            </div>
+                            <div class="kepsek-status">
+                                <div class="status-indicator">
+                                    <span class="status-dot hadir"></span>
+                                    <span class="status-label">HADIR</span>
+                                </div>
+                                <div class="kepsek-name" id="kepsekName">Dr. Ahmad Wijaya, M.Pd</div>
+                                <div class="kepsek-detail" id="kepsekDetail">
+                                    <i class="fas fa-info-circle"></i> Sedang memimpin rapat guru
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KOLOM 3: AGENDA KEPSEK -->
+                <section class="info-card card-agenda">
+                    <div class="card-header">
+                        <h2><i class="fas fa-calendar-alt"></i> Agenda Kepala Sekolah</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="agenda-date" id="agendaDate">Hari Ini</div>
+                        <ul class="agenda-list" id="agendaList">
+                            <li class="agenda-item">
+                                <span class="agenda-time">08:00 - 09:00</span>
+                                <span class="agenda-title">Upacara Bendera</span>
+                            </li>
+                            <li class="agenda-item">
+                                <span class="agenda-time">10:00 - 12:00</span>
+                                <span class="agenda-title">Rapat Koordinasi Guru</span>
+                            </li>
+                            <li class="agenda-item">
+                                <span class="agenda-time">13:00 - 15:00</span>
+                                <span class="agenda-title">Kunjungan Dinas Pendidikan</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- KOLOM 4: INFORMASI PENTING -->
+                <section class="info-card card-info">
+                    <div class="card-header">
+                        <h2><i class="fas fa-info-circle"></i> Informasi</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Kontak Penting</h4>
+                                <p>Kepsek: 0812-3456-7890</p>
+                                <p>TU: 0813-4567-8901</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Jam Sekolah</h4>
+                                <p>07:00 - 15:00 WIB</p>
+                                <p>Senin - Jumat</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <h4>Perhatian</h4>
+                                <p>Form izin hanya untuk guru</p>
+                                <p>Kirim sebelum jam 07:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2024 SMAI DRM - Sistem Informasi Digital</p>
+                <div class="footer-info">
+                    <span id="lastUpdate">Terakhir update: -</span>
+                    <button class="refresh-btn" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FORM IZIN -->
+    <div class="modal-overlay" id="izinModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-signature"></i> Form Pengajuan Izin</h3>
+                <button class="modal-close" onclick="closeIzinModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="izinForm">
+                    <div class="form-group">
+                        <label for="inputNama">
+                            <i class="fas fa-user"></i> Nama Lengkap
+                        </label>
+                        <input type="text" id="inputNama" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputMapel">
+                            <i class="fas fa-book"></i> Mata Pelajaran
+                        </label>
+                        <input type="text" id="inputMapel" placeholder="Mata pelajaran yang diampu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputAlasan">
+                            <i class="fas fa-comment-medical"></i> Alasan Izin
+                        </label>
+                        <select id="inputAlasan" required>
+                            <option value="">Pilih alasan</option>
+                            <option value="Sakit">Sakit</option>
+                            <option value="Keluarga">Keperluan Keluarga</option>
+                            <option value="Dinas">Dinas</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputTanggal">
+                            <i class="fas fa-calendar"></i> Tanggal Izin
+                        </label>
+                        <input type="date" id="inputTanggal" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputKeterangan">
+                            <i class="fas fa-sticky-note"></i> Keterangan (opsional)
+                        </label>
+                        <textarea id="inputKeterangan" rows="3" placeholder="Tambahkan keterangan jika perlu..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeIzinModal()">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SMAI DRM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <!-- HEADER -->
+        <div class="login-header">
+            <div class="login-logo">
+                <i class="fas fa-school"></i>
+                <div>
+                    <h1>SMAI DRM</h1>
+                    <p>Sistem Informasi Digital</p>
+                </div>
+            </div>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Kembali ke Papan
+            </a>
+        </div>
+
+        <!-- PILIHAN LEVEL -->
+        <div class="login-content">
+            <h2><i class="fas fa-user-shield"></i> Pilih Level Akses</h2>
+            
+            <!-- LEVEL 1: GURU -->
+            <div class="level-option" onclick="selectLevel('guru')" id="levelGuru">
+                <div class="level-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="level-info">
+                    <h3>Guru / Staff</h3>
+                    <p>Hanya melihat informasi dan mengajukan izin</p>
+                    <ul class="level-features">
+                        <li><i class="fas fa-eye"></i> Lihat semua informasi</li>
+                        <li><i class="fas fa-file-signature"></i> Ajukan izin melalui WhatsApp</li>
+                        <li><i class="fas fa-ban"></i> Tidak bisa mengedit data</li>
+                    </ul>
+                </div>
+                <div class="level-action">
+                    <button class="btn-level" onclick="selectLevel('guru')">
+                        Masuk sebagai Guru
+                    </button>
+                </div>
+            </div>
+
+            <!-- LEVEL 2: KEPALA SEKOLAH -->
+            <div class="level-option" onclick="selectLevel('kepsek')" id="levelKepsek">
+                <div class="level-icon kepsek">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="level-info">
+                    <h3>Kepala Sekolah</h3>
+                    <p>Edit informasi pribadi dan pengumuman</p>
+                    <ul class="level-features">
+                        <li><i class="fas fa-edit"></i> Edit status & agenda pribadi</li>
+                        <li><i class="fas fa-bullhorn"></i> Edit pengumuman banner</li>
+                        <li><i class="fas fa-user-check"></i> Edit guru piket</li>
+                        <li><i class="fas fa-ban"></i> Tidak bisa edit data guru lain</li>
+                    </ul>
+                </div>
+                <div class="level-action">
+                    <div class="password-input" id="kepsekPassword" style="display: none;">
+                        <input type="password" id="inputKepsekPassword" placeholder="Masukkan password">
+                        <button class="btn-level" onclick="loginKepsek()">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </div>
+                    <button class="btn-level" onclick="showPasswordInput('kepsek')" id="btnKepsek">
+                        Masuk sebagai Kepsek
+                    </button>
+                </div>
+            </div>
+
+            <!-- LEVEL 3: ADMIN SUPER -->
+            <div class="level-option" onclick="selectLevel('admin')" id="levelAdmin">
+                <div class="level-icon admin">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="level-info">
+                    <h3>Admin Super</h3>
+                    <p>Full access ke semua fitur sistem</p>
+                    <ul class="level-features">
+                        <li><i class="fas fa-database"></i> Edit semua data sistem</li>
+                        <li><i class="fas fa-trash-alt"></i> Reset dan backup data</li>
+                        <li><i class="fas fa-cogs"></i> Full control sistem</li>
+                        <li><i class="fas fa-user-edit"></i> Edit data semua guru</li>
+                    </ul>
+                </div>
+                <div class="level-action">
+                    <div class="password-input" id="adminPassword" style="display: none;">
+                        <input type="password" id="inputAdminPassword" placeholder="Masukkan password">
+                        <button class="btn-level" onclick="loginAdmin()">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </div>
+                    <button class="btn-level" onclick="showPasswordInput('admin')" id="btnAdmin">
+                        Masuk sebagai Admin
+                    </button>
+                </div>
+            </div>
+
+            <!-- PASSWORD INFO -->
+            <div class="password-info">
+                <p><i class="fas fa-info-circle"></i> Password default:</p>
+                <ul>
+                    <li><strong>Kepala Sekolah:</strong> <code>Drm84</code></li>
+                    <li><strong>Admin Super:</strong> <code>Darul84</code></li>
+                </ul>
+                <p class="note"><i class="fas fa-exclamation-triangle"></i> Simpan password dengan aman</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="login-footer">
+            <p>© 2024 SMAI DRM - Hak akses diatur oleh administrasi sekolah</p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
