@@ -56,15 +56,15 @@ const defaultData = {
     
     // Informasi Lain
     kontak: {
-        kepsek: "081234567890",
+        kepsek: "0821577718174,
         tataUsaha: "081345678901"
     },
     
     // Settings
     settings: {
-        jamSekolah: "07:00 - 15:00",
-        hariSekolah: "Senin - Jumat",
-        whatsappNumber: "6281234567890"
+        jamSekolah: "07:30 - 14.00",
+        hariSekolah: "Senin - Sabtu",
+        whatsappNumber: ""
     },
     
     // Metadata
