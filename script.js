@@ -57,14 +57,14 @@ const defaultData = {
     // Informasi Lain
     kontak: {
         kepsek: "0821577718174,
-        tataUsaha: "081345678901"
+        tataUsaha: "081351725620"
     },
     
     // Settings
     settings: {
         jamSekolah: "07:30 - 14.00",
         hariSekolah: "Senin - Sabtu",
-        whatsappNumber: ""
+        whatsappNumber: "082157718174"
     },
     
     // Metadata
